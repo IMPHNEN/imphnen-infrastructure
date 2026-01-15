@@ -1,0 +1,13 @@
+keys:
+  # Local machine - get with: age-keygen -y ~/.config/sops/age/keys.txt
+  - &local age1mv29htz8yawa3ksxggjanphgee38dxfprr93j4jy9jpx5z6kt3vqkkkpft
+  # Hetzner - get after deploy with:
+  # ssh root@<IP> "nix-shell -p ssh-to-age --run 'cat /etc/ssh/ssh_host_ed25519_key.pub | ssh-to-age'"
+  # - &hetzner age1...
+
+creation_rules:
+  - path_regex: hosts/hetzner/secrets\.yaml$
+    key_groups:
+      - age:
+          - *local
+          # - *hetzner
