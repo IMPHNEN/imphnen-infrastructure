@@ -1,7 +1,4 @@
-let
-  # Import local secrets (gitignored)
-  localSecrets = import ./secrets.local.nix;
-in {
+{
   hetzner = {
     hostname = "imphnen";
     ipAddress = "167.235.70.37";
@@ -23,6 +20,9 @@ in {
     hackathon = "hackathon.imphnen.dev";
   };
 
-  # Hackathon app environment variables (from local secrets file)
-  inherit (localSecrets) hackathon;
+  # Hackathon app environment variables (client-side, visible in browser)
+  hackathon = {
+    apiUrl = "phc_sZ366i7wdUq8pV7gf676BUefqP2zY1pXWldKtHDQMMm";
+    githubClientId = "Ov23li2IkCehE18qZO4R";
+  };
 }
