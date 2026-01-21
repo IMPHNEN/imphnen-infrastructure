@@ -55,7 +55,5 @@
   # Minimal packages only
   environment.systemPackages = with pkgs; [
     htop
-    curl
-    git
   ];
 }

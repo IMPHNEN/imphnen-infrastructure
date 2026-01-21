@@ -1,15 +1,43 @@
-# Frontend Apps Service Configuration (minimal - hackathon only)
-{ config, lib, pkgs, domains, hackathon, ... }:
+# Frontend Apps Service Configuration
+{ config, lib, pkgs, domains, ... }:
 
 {
-  # Hackathon (Static Vite with env vars)
-  services.imphnen-hackathon = {
+  # Landing (Next.js) - systemd service
+  services.imphnen-landing = {
     enable = true;
-    domain = domains.hackathon;
-    enableSSL = true;
-    package = pkgs.imphnen.mkHackathonWithEnv {
-      VITE_API_URL = hackathon.apiUrl;
-      VITE_GITHUB_CLIENT_ID = hackathon.githubClientId;
+    port = 3000;
+    hostname = "127.0.0.1";
+    openFirewall = false;
+  };
+
+  # Nginx reverse proxy for landing
+  services.nginx.virtualHosts.${domains.landing} = {
+    forceSSL = true;
+    enableACME = true;
+    locations."/" = {
+      proxyPass = "http://127.0.0.1:3000";
+      proxyWebsockets = true;
     };
+  };
+
+  # Gacha (Static Vite app)
+  services.imphnen-gacha = {
+    enable = true;
+    domain = domains.gacha;
+    enableSSL = true;
+  };
+
+  # Backoffice (Static Vite app)
+  services.imphnen-backoffice = {
+    enable = true;
+    domain = domains.backoffice;
+    enableSSL = true;
+  };
+
+  # Dimentorin (Static Vite app)
+  services.imphnen-dimentorin = {
+    enable = true;
+    domain = domains.dimentorin;
+    enableSSL = true;
   };
 }
