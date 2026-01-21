@@ -1,6 +1,16 @@
 # NixOS Server Configuration for IMPHNEN
 
-NixOS flake configuration for Hetzner VPS Powerd by Ancikri.
+NixOS flake configuration for Hetzner VPS.
+
+## Deployed Apps
+
+| App | Domain | Type |
+|-----|--------|------|
+| Landing | imphnen.dev | Next.js |
+| Gacha | gacha.imphnen.dev | Vite |
+| Backoffice | backoffice.imphnen.dev | Vite |
+| Dimentorin | dimentorin.imphnen.dev | Vite |
+| Hackathon | hackathon.imphnen.dev | Vite |
 
 ## Deployment
 
@@ -18,6 +28,12 @@ nix run github:nix-community/nixos-anywhere -- \
 nixos-rebuild switch --flake .#hetzner --target-host root@<IP_ADDRESS> --build-host localhost
 ```
 
+### Remote build (recommended for cross-platform)
+
+```bash
+nixos-rebuild switch --flake .#hetzner --target-host root@<IP_ADDRESS> --build-host root@<IP_ADDRESS>
+```
+
 ## Configuration
 
 Update `config.nix` with your VPS details:
@@ -27,23 +43,17 @@ Update `config.nix` with your VPS details:
   hetzner = {
     hostname = "imphnen";
     ipAddress = "YOUR_IP_ADDRESS";
-    gateway = "172.31.1.1";  # Check Hetzner Cloud Console
+    gateway = "172.31.1.1";
+  };
+
+  domains = {
+    landing = "imphnen.dev";
+    gacha = "gacha.imphnen.dev";
+    backoffice = "backoffice.imphnen.dev";
+    dimentorin = "dimentorin.imphnen.dev";
+    hackathon = "hackathon.imphnen.dev";
   };
 }
-```
-
-## Secrets (sops-nix)
-
-After first deployment, get the server's age key:
-
-```bash
-ssh root@<IP> "nix-shell -p ssh-to-age --run 'cat /etc/ssh/ssh_host_ed25519_key.pub | ssh-to-age'"
-```
-
-Add it to `.sops.yaml`, then edit secrets:
-
-```bash
-sops hosts/hetzner/secrets.yaml
 ```
 
 ## Structure
@@ -60,6 +70,7 @@ imphnen-infrastructure/
 │   ├── sops.nix
 │   ├── secrets.yaml
 │   └── services/
+│       └── frontend-apps.nix
 └── profiles/
     ├── base.nix
     └── server.nix
