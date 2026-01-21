@@ -2,6 +2,8 @@
   hostname,
   ipAddress,
   gateway,
+  domains,
+  hackathon,
   ...
 }:
 {
@@ -10,8 +12,7 @@
     ./disk-config.nix
     ../../profiles/server.nix
     ./sops.nix
-    # Add your services here
-    # ./services/your-service.nix
+    ./services/frontend-apps.nix
   ];
 
   # Hetzner Cloud network interface: enp1s0, eth0, or ens3

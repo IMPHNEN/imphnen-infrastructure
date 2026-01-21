@@ -13,6 +13,11 @@
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    imphnen-frontend = {
+      url = "github:IMPHNEN/imphnen-frontend-service";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -20,6 +25,7 @@
       nixpkgs,
       disko,
       sops-nix,
+      imphnen-frontend,
       ...
     }:
     let
@@ -30,11 +36,18 @@
         system = "x86_64-linux";
         specialArgs = {
           inherit (config.hetzner) hostname ipAddress gateway;
-          inherit (config) sshKeys acmeEmail;
+          inherit (config) sshKeys acmeEmail domains hackathon;
         };
         modules = [
           disko.nixosModules.disko
           sops-nix.nixosModules.sops
+
+          # Apply frontend overlay
+          { nixpkgs.overlays = [ imphnen-frontend.overlays.default ]; }
+
+          # Import frontend NixOS modules
+          imphnen-frontend.nixosModules.all
+
           ./hosts/hetzner
         ];
       };
