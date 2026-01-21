@@ -47,4 +47,11 @@
     domain = domains.hackathon;
     enableSSL = true;
   };
+
+  # Infra (Static Vite app - infrastructure documentation)
+  services.imphnen-infra = {
+    enable = true;
+    domain = domains.infra;
+    enableSSL = true;
+  };
 }

@@ -18,5 +18,6 @@
     backoffice = "backoffice.imphnen.dev";
     dimentorin = "dimentorin.imphnen.dev";
     hackathon = "hackathon.imphnen.dev";
+    infra = "infra.imphnen.dev";
   };
 }

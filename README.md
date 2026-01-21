@@ -11,6 +11,7 @@ NixOS flake configuration for Hetzner VPS.
 | Backoffice | backoffice.imphnen.dev | Vite |
 | Dimentorin | dimentorin.imphnen.dev | Vite |
 | Hackathon | hackathon.imphnen.dev | Vite |
+| Infra | infra.imphnen.dev | Vite |
 
 ## Deployment
 
@@ -52,6 +53,7 @@ Update `config.nix` with your VPS details:
     backoffice = "backoffice.imphnen.dev";
     dimentorin = "dimentorin.imphnen.dev";
     hackathon = "hackathon.imphnen.dev";
+    infra = "infra.imphnen.dev";
   };
 }
 ```

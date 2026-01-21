@@ -51,6 +51,7 @@
           imphnen-frontend.nixosModules.backoffice
           imphnen-frontend.nixosModules.dimentorin
           imphnen-frontend.nixosModules.hackathon
+          imphnen-frontend.nixosModules.infra
 
           ./hosts/hetzner
         ];
