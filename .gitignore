@@ -2,6 +2,10 @@
 result
 result-*
 
+# Local secrets (not committed)
+secrets.local.nix
+.env*
+
 # Direnv
 .direnv/
 
