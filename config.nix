@@ -1,8 +1,7 @@
 {
   hetzner = {
     hostname = "imphnen";
-    # TODO: Update with actual Hetzner VPS IP address
-    ipAddress = "0.0.0.0";
+    ipAddress = "157.66.55.174";
     gateway = "172.31.1.1";
   };
 
