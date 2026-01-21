@@ -19,10 +19,4 @@
     dimentorin = "dimentorin.imphnen.dev";
     hackathon = "hackathon.imphnen.dev";
   };
-
-  # Hackathon app environment variables (client-side, visible in browser)
-  hackathon = {
-    apiUrl = "phc_sZ366i7wdUq8pV7gf676BUefqP2zY1pXWldKtHDQMMm";
-    githubClientId = "Ov23li2IkCehE18qZO4R";
-  };
 }

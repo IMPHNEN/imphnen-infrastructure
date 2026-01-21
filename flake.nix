@@ -36,7 +36,7 @@
         system = "x86_64-linux";
         specialArgs = {
           inherit (config.hetzner) hostname ipAddress gateway;
-          inherit (config) sshKeys acmeEmail domains hackathon;
+          inherit (config) sshKeys acmeEmail domains;
         };
         modules = [
           disko.nixosModules.disko

@@ -8,13 +8,5 @@
       keyFile = "/var/lib/sops-nix/key.txt";
       generateKey = true;
     };
-
-    # Define your secrets here
-    # secrets = {
-    #   "myapp/env" = {
-    #     mode = "0400";
-    #     owner = "root";
-    #   };
-    # };
   };
 }
