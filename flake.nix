@@ -50,6 +50,7 @@
           imphnen-frontend.nixosModules.gacha
           imphnen-frontend.nixosModules.backoffice
           imphnen-frontend.nixosModules.dimentorin
+          imphnen-frontend.nixosModules.hackathon
 
           ./hosts/hetzner
         ];

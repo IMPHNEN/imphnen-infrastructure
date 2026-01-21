@@ -40,4 +40,11 @@
     domain = domains.dimentorin;
     enableSSL = true;
   };
+
+  # Hackathon (Static Vite app)
+  services.imphnen-hackathon = {
+    enable = true;
+    domain = domains.hackathon;
+    enableSSL = true;
+  };
 }
