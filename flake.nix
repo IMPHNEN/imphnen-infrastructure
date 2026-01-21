@@ -45,8 +45,8 @@
           # Apply frontend overlay
           { nixpkgs.overlays = [ imphnen-frontend.overlays.default ]; }
 
-          # Import frontend NixOS modules
-          imphnen-frontend.nixosModules.all
+          # Import only hackathon module (minimal)
+          imphnen-frontend.nixosModules.hackathon
 
           ./hosts/hetzner
         ];
