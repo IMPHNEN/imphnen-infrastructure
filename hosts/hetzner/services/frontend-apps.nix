@@ -20,6 +20,13 @@
     };
   };
 
+  # www subdomain redirects to main domain
+  services.nginx.virtualHosts.${domains.www} = {
+    forceSSL = true;
+    enableACME = true;
+    globalRedirect = domains.landing;
+  };
+
   # Gacha (Static Vite app)
   services.imphnen-gacha = {
     enable = true;

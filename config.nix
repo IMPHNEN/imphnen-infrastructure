@@ -14,6 +14,7 @@
   # Domain mappings for frontend apps
   domains = {
     landing = "imphnen.dev";
+    www = "www.imphnen.dev";
     gacha = "gacha.imphnen.dev";
     backoffice = "backoffice.imphnen.dev";
     dimentorin = "dimentorin.imphnen.dev";
