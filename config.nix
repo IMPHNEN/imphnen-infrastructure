@@ -1,7 +1,7 @@
 {
   hetzner = {
     hostname = "imphnen";
-    ipAddress = "157.66.55.174";
+    ipAddress = "167.235.70.37";
     gateway = "172.31.1.1";
   };
 
