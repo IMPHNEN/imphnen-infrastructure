@@ -41,6 +41,7 @@
     enableACME = true;
     locations."/" = {
       proxyPass = "http://127.0.0.1:8080";
+      recommendedProxySettings = false; # Don't duplicate headers
       extraConfig = ''
         # Proxy settings
         proxy_http_version 1.1;
