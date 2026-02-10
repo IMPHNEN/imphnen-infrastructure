@@ -18,6 +18,11 @@
       url = "github:IMPHNEN/imphnen-frontend-service";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    imphnen-backend-qr = {
+      url = "github:IMPHNEN/imphnen-backend-qr";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -26,6 +31,7 @@
       disko,
       sops-nix,
       imphnen-frontend,
+      imphnen-backend-qr,
       ...
     }:
     let
@@ -42,8 +48,13 @@
           disko.nixosModules.disko
           sops-nix.nixosModules.sops
 
-          # Apply frontend overlay
-          { nixpkgs.overlays = [ imphnen-frontend.overlays.default ]; }
+          # Apply overlays
+          {
+            nixpkgs.overlays = [
+              imphnen-frontend.overlays.default
+              imphnen-backend-qr.overlays.default
+            ];
+          }
 
           # Import frontend modules
           imphnen-frontend.nixosModules.landing
@@ -52,6 +63,9 @@
           imphnen-frontend.nixosModules.dimentorin
           imphnen-frontend.nixosModules.hackathon
           imphnen-frontend.nixosModules.infra
+
+          # Import backend modules
+          imphnen-backend-qr.nixosModules.backend-qr
 
           ./hosts/hetzner
         ];

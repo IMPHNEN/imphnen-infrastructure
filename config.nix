@@ -11,8 +11,9 @@
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICdLKnxrQl735W+ANR4dnWTrNEMmrIzv7TioI0teJmMZ ms@computer"
   ];
 
-  # Domain mappings for frontend apps
+  # Domain mappings
   domains = {
+    # Frontend apps
     landing = "imphnen.dev";
     www = "www.imphnen.dev";
     gacha = "gacha.imphnen.dev";
@@ -20,5 +21,8 @@
     dimentorin = "dimentorin.imphnen.dev";
     hackathon = "hackathon.imphnen.dev";
     infra = "infra.imphnen.dev";
+
+    # Backend APIs
+    apiQr = "api-qr.imphnen.dev";
   };
 }

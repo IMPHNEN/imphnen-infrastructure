@@ -13,6 +13,7 @@
     ../../profiles/server.nix
     ./sops.nix
     ./services/frontend-apps.nix
+    ./services/backend-qr.nix
   ];
 
   # Hetzner Cloud network interface: enp1s0, eth0, or ens3
