@@ -63,6 +63,7 @@
           imphnen-frontend.nixosModules.dimentorin
           imphnen-frontend.nixosModules.hackathon
           imphnen-frontend.nixosModules.infra
+          imphnen-frontend.nixosModules.qrcampaign
 
           # Import backend modules
           imphnen-backend-qr.nixosModules.backend-qr
