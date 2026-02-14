@@ -61,4 +61,11 @@
     domain = domains.infra;
     enableSSL = true;
   };
+
+  # QR Campaign (Static Vite app)
+  services.imphnen-qrcampaign = {
+    enable = true;
+    domain = domains.qr;
+    enableSSL = true;
+  };
 }

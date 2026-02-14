@@ -21,6 +21,7 @@
     dimentorin = "dimentorin.imphnen.dev";
     hackathon = "hackathon.imphnen.dev";
     infra = "infra.imphnen.dev";
+    qr = "qr.imphnen.dev";
 
     # Backend APIs
     apiQr = "api-qr.imphnen.dev";
