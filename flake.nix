@@ -4,13 +4,8 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
 
-    disko = {
-      url = "github:nix-community/disko";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    sops-nix = {
-      url = "github:Mic92/sops-nix";
+    clan-core = {
+      url = "https://git.clan.lol/clan/clan-core/archive/main.tar.gz";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -27,52 +22,79 @@
 
   outputs =
     {
+      self,
       nixpkgs,
-      disko,
-      sops-nix,
+      clan-core,
       imphnen-frontend,
       imphnen-backend-qr,
       ...
     }:
     let
       config = import ./config.nix;
-    in
-    {
-      nixosConfigurations.hetzner = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
+
+      clan = clan-core.lib.clan {
+        inherit self;
+        meta.name = "imphnen";
+
         specialArgs = {
           inherit (config.hetzner) hostname ipAddress gateway;
           inherit (config) sshKeys acmeEmail domains;
         };
-        modules = [
-          disko.nixosModules.disko
-          sops-nix.nixosModules.sops
 
-          # Apply overlays
-          {
-            nixpkgs.overlays = [
-              imphnen-frontend.overlays.default
-              imphnen-backend-qr.overlays.default
-            ];
-          }
+        machines.hetzner = {
+          nixpkgs.hostPlatform = "x86_64-linux";
 
-          # Import frontend modules
-          imphnen-frontend.nixosModules.landing
-          imphnen-frontend.nixosModules.gacha
-          imphnen-frontend.nixosModules.backoffice
-          imphnen-frontend.nixosModules.dimentorin
-          imphnen-frontend.nixosModules.hackathon
-          imphnen-frontend.nixosModules.infra
-          imphnen-frontend.nixosModules.qrcampaign
+          clan.core.networking.targetHost = "root@${config.hetzner.ipAddress}";
 
-          # Import backend modules
-          imphnen-backend-qr.nixosModules.backend-qr
+          imports = [
+            # Apply overlays
+            {
+              nixpkgs.overlays = [
+                imphnen-frontend.overlays.default
+                imphnen-backend-qr.overlays.default
+              ];
+            }
 
-          ./hosts/hetzner
-        ];
+            # Import frontend modules
+            imphnen-frontend.nixosModules.landing
+            imphnen-frontend.nixosModules.gacha
+            imphnen-frontend.nixosModules.backoffice
+            imphnen-frontend.nixosModules.dimentorin
+            imphnen-frontend.nixosModules.hackathon
+            imphnen-frontend.nixosModules.infra
+            imphnen-frontend.nixosModules.qrcampaign
+
+            # Import backend modules
+            imphnen-backend-qr.nixosModules.backend-qr
+
+            ./hosts/hetzner
+          ];
+        };
       };
+    in
+    {
+      inherit (clan.config) nixosConfigurations clanInternals;
+      clan = clan.config;
 
       formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixfmt-rfc-style;
       formatter.aarch64-darwin = nixpkgs.legacyPackages.aarch64-darwin.nixfmt-rfc-style;
+
+      devShells =
+        let
+          forSystem =
+            system:
+            let
+              pkgs = nixpkgs.legacyPackages.${system};
+            in
+            {
+              default = pkgs.mkShell {
+                packages = [ clan-core.packages.${system}.clan-cli ];
+              };
+            };
+        in
+        {
+          x86_64-linux = forSystem "x86_64-linux";
+          aarch64-darwin = forSystem "aarch64-darwin";
+        };
     };
 }

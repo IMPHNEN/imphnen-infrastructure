@@ -16,24 +16,27 @@
     ./services/backend-qr.nix
   ];
 
-  # Hetzner Cloud network interface: enp1s0, eth0, or ens3
+  # Use systemd-networkd (required by clan-core)
   networking = {
     hostName = hostname;
     useDHCP = false;
-    interfaces.enp1s0.ipv4.addresses = [
-      {
-        address = ipAddress;
-        prefixLength = 32;
-      }
-    ];
-    defaultGateway = {
-      address = gateway;
-      interface = "enp1s0";
-    };
+    useNetworkd = true;
     nameservers = [
       "185.12.64.1"
       "185.12.64.2"
       "1.1.1.1"
     ];
+  };
+
+  systemd.network.networks."40-enp1s0" = {
+    matchConfig.Name = "enp1s0";
+    address = [ "${ipAddress}/32" ];
+    gateway = [ gateway ];
+    dns = [
+      "185.12.64.1"
+      "185.12.64.2"
+      "1.1.1.1"
+    ];
+    networkConfig.DHCP = "no";
   };
 }
