@@ -28,8 +28,8 @@
     ];
   };
 
-  systemd.network.networks."40-enp1s0" = {
-    matchConfig.Name = "enp1s0";
+  systemd.network.networks."40-wan" = {
+    matchConfig.Name = "enp* eth*";
     address = [ "${ipAddress}/32" ];
     gateway = [ gateway ];
     dns = [

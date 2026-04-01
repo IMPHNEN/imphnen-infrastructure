@@ -12,6 +12,7 @@
 
   users.users.root = {
     shell = pkgs.bash;
+    hashedPassword = "$6$0WWQ.kChMXAsFEMO$jlujK5zsa.4xp1jKSowNae/b3/WBEXqXLOuGGT04am/kMHLwW4KyoImoriMYV3pv2LplyWsHwY1uXJEJwPDzZ1";
     openssh.authorizedKeys.keys = sshKeys;
   };
 
