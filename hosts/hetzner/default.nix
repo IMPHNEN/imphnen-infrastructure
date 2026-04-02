@@ -14,6 +14,7 @@
     ./sops.nix
     ./services/frontend-apps.nix
     ./services/backend-qr.nix
+    ./services/backend.nix
   ];
 
   # Use systemd-networkd (required by clan-core)

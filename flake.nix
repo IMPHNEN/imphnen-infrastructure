@@ -18,6 +18,11 @@
       url = "github:IMPHNEN/imphnen-backend-qr";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    imphnen-backend = {
+      url = "github:IMPHNEN/imphnen-backend-service";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -27,6 +32,7 @@
       clan-core,
       imphnen-frontend,
       imphnen-backend-qr,
+      imphnen-backend,
       ...
     }:
     let
@@ -52,6 +58,7 @@
               nixpkgs.overlays = [
                 imphnen-frontend.overlays.default
                 imphnen-backend-qr.overlays.default
+                imphnen-backend.overlays.default
               ];
             }
 
@@ -66,6 +73,7 @@
 
             # Import backend modules
             imphnen-backend-qr.nixosModules.backend-qr
+            imphnen-backend.nixosModules.backend
 
             ./hosts/hetzner
           ];

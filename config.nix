@@ -26,5 +26,6 @@
 
     # Backend APIs
     apiQr = "api-qr.imphnen.dev";
+    api = "api.imphnen.dev";
   };
 }
