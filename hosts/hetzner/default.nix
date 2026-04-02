@@ -32,12 +32,14 @@
   systemd.network.networks."40-wan" = {
     matchConfig.Name = "enp* eth*";
     address = [ "${ipAddress}/32" ];
-    gateway = [ gateway ];
     dns = [
       "185.12.64.1"
       "185.12.64.2"
       "1.1.1.1"
     ];
     networkConfig.DHCP = "no";
+    routes = [
+      { Gateway = gateway; GatewayOnLink = true; }
+    ];
   };
 }
