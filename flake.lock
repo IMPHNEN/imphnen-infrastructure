@@ -131,6 +131,26 @@
         "type": "github"
       }
     },
+    "imphnen-backend": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1775113766,
+        "narHash": "sha256-leZyp81CtQaai+Whfn8kSCkOPvbPACTwtYOo0YHQb8U=",
+        "owner": "IMPHNEN",
+        "repo": "imphnen-backend-service",
+        "rev": "05a5b39195f5e43a2c9b0e952bbd36a98b203509",
+        "type": "github"
+      },
+      "original": {
+        "owner": "IMPHNEN",
+        "repo": "imphnen-backend-service",
+        "type": "github"
+      }
+    },
     "imphnen-backend-qr": {
       "inputs": {
         "flake-utils": "flake-utils",
@@ -226,6 +246,7 @@
     "root": {
       "inputs": {
         "clan-core": "clan-core",
+        "imphnen-backend": "imphnen-backend",
         "imphnen-backend-qr": "imphnen-backend-qr",
         "imphnen-frontend": "imphnen-frontend",
         "nixpkgs": "nixpkgs"
