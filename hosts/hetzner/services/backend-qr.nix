@@ -14,9 +14,9 @@
     port = 8080;
     openFirewall = false;
 
-    # Database configuration
+    # Database is managed centrally via services/postgres.nix
     database = {
-      createLocally = true;
+      createLocally = false;
       name = "imphnen_qr";
       user = "imphnen_qr";
     };

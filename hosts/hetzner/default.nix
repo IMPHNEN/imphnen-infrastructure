@@ -12,6 +12,7 @@
     ./disk-config.nix
     ../../profiles/server.nix
     ./sops.nix
+    ./services/postgres.nix
     ./services/frontend-apps.nix
     ./services/backend-qr.nix
     ./services/backend.nix

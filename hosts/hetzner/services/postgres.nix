@@ -1,0 +1,26 @@
+{ pkgs, ... }:
+{
+  services.postgresql = {
+    enable = true;
+    package = pkgs.postgresql_16;
+
+    ensureDatabases = [ "imphnen" "imphnen_qr" ];
+    ensureUsers = [
+      {
+        name = "imphnen";
+        ensureDBOwnership = true;
+      }
+      {
+        name = "imphnen_qr";
+        ensureDBOwnership = true;
+      }
+    ];
+
+    # Trust local connections so services can connect without passwords
+    authentication = pkgs.lib.mkOverride 10 ''
+      local all all              trust
+      host  all all 127.0.0.1/32 trust
+      host  all all ::1/128      trust
+    '';
+  };
+}
