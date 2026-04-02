@@ -2,7 +2,7 @@ keys:
   # Local machine - get with: age-keygen -y ~/.config/sops/age/keys.txt
   - &local age1mv29htz8yawa3ksxggjanphgee38dxfprr93j4jy9jpx5z6kt3vqkkkpft
   # Hetzner server
-  - &hetzner age1s9ny7hy052myupkhd62whfct8rcs6j7f4msty9fcyl37jgverylqzgw27x
+  - &hetzner age12m0l87uks5j9q93fdcuu22yxfe7yfwwzvl6ryautfsp4nmm73udqg5g2y2
 
 creation_rules:
   - path_regex: hosts/hetzner/secrets\.yaml$
