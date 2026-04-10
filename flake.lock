@@ -138,11 +138,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1775811888,
-        "narHash": "sha256-rGlk6zJN3Gow6qRcTet841MI1LN+b61wPUHYYnXMygc=",
+        "lastModified": 1775832135,
+        "narHash": "sha256-2kj1pJCYlDbNwZimGIMVBTuZP7M/H4qLy77gbv/2TFA=",
         "owner": "IMPHNEN",
         "repo": "imphnen-backend-service",
-        "rev": "6570bbf752a97f25bc197866c5071b60a91f7024",
+        "rev": "db44c5a51f7eb9e27bc788921adfb75817ccef9f",
         "type": "github"
       },
       "original": {
