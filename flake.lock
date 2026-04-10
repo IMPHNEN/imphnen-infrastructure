@@ -180,11 +180,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1775834820,
-        "narHash": "sha256-dvBV1vJC3oUa7kMCqmsx8rm7kxYktzvn/d1ebC34W/E=",
+        "lastModified": 1775835430,
+        "narHash": "sha256-jq/UVAjkRbsDMS0OCQzK8W1uTYyI8MIHJfPbbjtwZB0=",
         "owner": "IMPHNEN",
         "repo": "imphnen-frontend-service",
-        "rev": "063587aca9a5cc03abc314d4e690de5d16c8e78c",
+        "rev": "931355e64ee7a27e5721b145a730c7b56de0104c",
         "type": "github"
       },
       "original": {
