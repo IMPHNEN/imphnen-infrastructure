@@ -2,22 +2,11 @@
 { config, lib, pkgs, domains, ... }:
 
 {
-  # Landing (Next.js) - systemd service
+  # Landing (Astro static site)
   services.imphnen-landing = {
     enable = true;
-    port = 3000;
-    hostname = "127.0.0.1";
-    openFirewall = false;
-  };
-
-  # Nginx reverse proxy for landing
-  services.nginx.virtualHosts.${domains.landing} = {
-    forceSSL = true;
-    enableACME = true;
-    locations."/" = {
-      proxyPass = "http://127.0.0.1:3000";
-      proxyWebsockets = true;
-    };
+    domain = domains.landing;
+    enableSSL = true;
   };
 
   # www subdomain redirects to main domain
